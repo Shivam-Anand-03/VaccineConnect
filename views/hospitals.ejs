@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospitals for Vaccine</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e3f2fd, #fff);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: #1a73e8;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .navbar {
+            background-color: #1a73e8;
+            padding: 10px 20px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            /* Center the navbar content */
+            width: fit-content;
+            margin: 0 auto;
+            /* Ensure the navbar doesn't spread full width */
+        }
+
+        .navbar li {
+            margin: 0 15px;
+            /* Add space between items */
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #145ab6;
+            border-radius: 5px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        label {
+            margin-right: 10px;
+        }
+
+        input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1em;
+        }
+
+        button:hover {
+            background-color: #145ab6;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        li.navb {
+            justify-content: center;
+            list-style-type: none;
+            border: 0px;
+            padding: 10px;
+        }
+        
+
+        .nav-buttons {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .nav-buttons button {
+            margin: 0 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul>
+            <li class="navb"><a href="/vaccines">Home</a></li>
+            <li class="navb"><a href="/my-appointments">Appointments</a></li>
+            <li class="navb"><a href="/notifications">Notifications</a></li>
+            <li class="navb"><a href="/profile">Profile</a></li>
+            <li class="navb"><a href="/insurance">Insurance</a></li>
+            <li class="navb"><a href="/vaccine-info">Vaccine Awareness</a></li>
+            <li class="navb"><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Hospitals Offering This Vaccine</h1>
+
+        <form method="GET" action="/vaccines/<%= vaccineId %>/hospitals">
+            <label for="city">Filter by City:</label>
+            <input type="text" id="city" name="city" placeholder="Enter city">
+            <button type="submit">Filter</button>
+        </form>
+
+        <ul>
+            <% hospitals.forEach(hospital=> { %>
+                <li>
+                    <strong>
+                        <%= hospital.hospital_name %>
+                    </strong><br>
+                    Location: <%= hospital.location %><br>
+                        Phone: <%= hospital.phone %><br>
+                            <a href="/hospitals/<%= hospital.hospital_id %>/doctors">View Doctors</a>
+                </li>
+                <% }); %>
+        </ul>
+
+    </div>
+</body>
+
+</html>

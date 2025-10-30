@@ -1,0 +1,201 @@
+<!-- views/vaccine-info.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vaccine Information - VaccineConnect</title>
+    <link rel="stylesheet" href="/styles.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #e0f7fa, #f1f8e9);
+            color: #333;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
+
+        nav {
+            width: 100%;
+            background-color: #1a73e8;
+            padding: 15px 0;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        h1 {
+            color: #1a73e8;
+            font-size: 2.5em;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: #444;
+            font-size: 1.8em;
+            margin-top: 10px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+
+        thead {
+            background-color: #1a73e8;
+            color: white;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tbody tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        th {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1em;
+        }
+
+        td {
+            font-size: 0.9em;
+            color: #444;
+        }
+
+        .button {
+            background-color: #1a73e8;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1em;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 30px;
+        }
+
+        .button:hover {
+            background-color: #145ab6;
+        }
+
+        /* Ensure the page is scrollable */
+        html,
+        body {
+            height: auto;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="/vaccines">Home</a></li>
+            <li><a href="/my-appointments">Appointments</a></li>
+            <li><a href="/notifications">Notifications</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/insurance">Insurance</a></li>
+            <li><a href="/vaccine-info">Vaccine Awareness</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Vaccine Information</h1>
+        <h2>Detailed Information about Available Vaccines</h2>
+
+        <!-- Vaccine Information Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Vaccine Name</th>
+                    <th>Type</th>
+                    <th>Manufacturer</th>
+                    <th>Description</th>
+                    <th>How It Works</th>
+                    <th>Side Effects</th>
+                    <th>Precautions</th>
+                    <th>Effectiveness</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% vaccines.forEach(vaccine=> { %>
+                    <tr>
+                        <td>
+                            <%= vaccine.vaccine_name %>
+                        </td>
+                        <td>
+                            <%= vaccine.vaccine_type %>
+                        </td>
+                        <td>
+                            <%= vaccine.manufacturer %>
+                        </td>
+                        <td>
+                            <%= vaccine.description %>
+                        </td>
+                        <td>
+                            <%= vaccine.how_it_works %>
+                        </td>
+                        <td>
+                            <%= vaccine.side_effects %>
+                        </td>
+                        <td>
+                            <%= vaccine.precautions %>
+                        </td>
+                        <td>
+                            <%= vaccine.effectiveness %>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
+        </table>
+
+    </div>
+</body>
+
+</html>
